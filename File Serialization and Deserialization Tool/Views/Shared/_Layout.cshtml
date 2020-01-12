@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Serializer Tool</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark maring-bottom-10px">
+    <div class="container">
+        @Html.ActionLink("File Serializer Tool", "Serialize", "FileProcessing", new { @class = "navbar-brand" })
+
+        <ul class="navbar-nav mr-auto col-sm-12">
+            <li class="nav-item">
+                <a class="nav-link" href="~/FileProcessing/Serialize">Serialize</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="~/FileProcessing/Deserialize">Deserialize</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

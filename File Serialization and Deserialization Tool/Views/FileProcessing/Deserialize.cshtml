@@ -1,0 +1,34 @@
+﻿@using File_Serialization_and_Deserialization_Tool.Models
+@model DeserializeFileModel
+
+<h2>Deserialize</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<div class="row">
+    <div class="padding-left-15px">
+        @using (Html.BeginForm("Deserialize", "FileProcessing", FormMethod.Post))
+        {
+            <div class="custom-file margin-bottom-10px">
+                <label>File type:</label>
+                @Html.DropDownListFor(m => m.FileType, new SelectList(Model.FileTypeList, "Value", "Text"), new {@class = "custom-select"})
+            </div>
+
+            <div class="custom-group margin-bottom-10px">
+                <div class="maring-top-15px">
+                    <label>File base64 string:</label>
+                </div>
+                @Html.TextAreaFor(m => m.SerializedFile, new {rows = "10", cols = "60"})
+            </div>
+
+            <div class="custom-group margin-bottom-10px">
+                <input type="submit" value="Submit" class="btn btn-default btn-primary"/>
+            </div>
+        }
+    </div>
+</div>

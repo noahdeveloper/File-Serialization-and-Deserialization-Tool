@@ -1,0 +1,40 @@
+﻿@using File_Serialization_and_Deserialization_Tool.Models
+@model SerializeFileModel
+
+<h2>Serialize</h2>
+<div class="row">
+    <div class="padding-left-15px">
+        @using (Html.BeginForm("Serialize", "FileProcessing", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="custom-file margin-bottom-10px">
+                <label>Choose file...</label>
+                @Html.TextBoxFor(m => m.File, new { type = "file", name = "File", @class = "custom-file-input" })
+                <label class="custom-file-label" for="file">Choose file...</label>
+            </div>
+
+            <div class="custom-group margin-bottom-10px">
+                <label>File type:</label>
+                @Html.DropDownListFor(m => m.FileType, new SelectList(Model.FileTypeList, "Value", "Text"), new { @class = "custom-select" })
+            </div>
+
+            <div class="custom-group margin-bottom-10px">
+                <input type="submit" value="Submit" class="btn btn-default btn-primary" />
+            </div>
+        }
+
+        <div id="serialize-result-section">
+            <div class="margin-bottom-10px">
+                <button id="serialize-result-hide-button" class="btn btn-secondary">Hide Result</button>
+                <button id="copy-button" class="btn btn-secondary">Copy text</button>
+            </div>
+
+            <label>Serialized file (base 64 string):</label>
+            <div>
+                <textarea id="serialize-result" rows="10" cols="60"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Page/Serialize.js"></script>
+
